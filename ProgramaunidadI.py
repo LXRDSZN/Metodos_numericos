@@ -22,7 +22,7 @@ else:
     # Calcular el resultado
     resultado = ((valor_verdadero_fraccion - valor_aproximado_fraccion) / valor_verdadero_fraccion) * 100
 
-    # Imprimir el resultado formateado
+    # Imprimir el resultado formateadoLXRDSZN
     if resultado > 0:
         print("La respuesta es:", resultado, "%")
     else:
