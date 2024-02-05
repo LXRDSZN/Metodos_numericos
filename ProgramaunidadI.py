@@ -22,9 +22,12 @@ else:
     # Calcular el resultado
     resultado = ((valor_verdadero_fraccion - valor_aproximado_fraccion) / valor_verdadero_fraccion) * 100
 
-    # Imprimir el resultado formateadoLXRDSZN
-    if resultado > 0:
-        print("La respuesta es:", resultado, "%")
+    # Convertir el resultado a decimal
+    resultado_decimal = float(resultado)
+
+    # Imprimir el resultado formateado
+    if resultado_decimal > 0:
+        print("La respuesta es:", resultado_decimal, "%")
     else:
-        nuevoresultado = resultado * -1
+        nuevoresultado = resultado_decimal * -1
         print("El resultado es:", nuevoresultado, "%")
