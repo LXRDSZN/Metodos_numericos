@@ -8,11 +8,11 @@ def convertir_a_fraccion(numero):
         return None
 
 # Solicitar al usuario el valor verdadero en fracción
-entrada_valor_verdadero = input("┌─[DIGITA EL VALOR VERDADERO]\n└──╼ ")
+entrada_valor_verdadero = input("┌─[DIGITA EL VALOR VERDADERO (en fraccion 2/8 o en decimales)]\n└──╼ ")
 valor_verdadero_fraccion = convertir_a_fraccion(entrada_valor_verdadero)
 
 # Solicitar al usuario el valor aproximado en fracción
-entrada_valor_aproximado = input("┌─[DIGITA EL VALOR APROXIMADO]\n└──╼ ")
+entrada_valor_aproximado = input("┌─[DIGITA EL VALOR APROXIMADO (en fraccion 2/8 o en decimales)]\n└──╼ ")
 valor_aproximado_fraccion = convertir_a_fraccion(entrada_valor_aproximado)
 
 # Verificar si las entradas son válidas
@@ -27,7 +27,7 @@ else:
 
     # Imprimir el resultado formateado
     if resultado_decimal > 0:
-        print("La respuesta es:", resultado_decimal, "%")
+        print("El error relativo porcentual es :", resultado_decimal, "%")
     else:
         nuevoresultado = resultado_decimal * -1
-        print("El resultado es:", nuevoresultado, "%")
+        print("El Error relativo porcentual es :", nuevoresultado, "%")
