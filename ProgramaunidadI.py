@@ -21,7 +21,7 @@ if valor_verdadero_fraccion is None or valor_aproximado_fraccion is None:
 else:
     # Calcular el resultado
     resultado = ((valor_verdadero_fraccion - valor_aproximado_fraccion) / valor_verdadero_fraccion) * 100
-
+   
     # Convertir el resultado a decimal
     resultado_decimal = float(resultado)
 
@@ -30,4 +30,4 @@ else:
         print("El error relativo porcentual es :", resultado_decimal, "%")
     else:
         nuevoresultado = resultado_decimal * -1
-        print("El Error relativo porcentual es :", nuevoresultado, "%")
+        print
