@@ -1,8 +1,5 @@
 
 package derivadas_integrales;
-import org.lsmp.djep.djep.DJep;
-import org.nfunk.jep.Node;
-import org.nfunk.jep.ParseException;
 import java.util.Scanner;
 /**
  *
@@ -13,12 +10,19 @@ public class Derivadas {
     Scanner sc = new Scanner(System.in);
     String funcion = "";
         // DJep es la clase encargada de la derivacion en su escencia
-         DJep djep;
-         Node nodoFuncion;
-         Node nodoDerivada;
         System.out.print("┌─[DIGITA TU FUNCION A DERIVAR]─[~]\n" +"└──╼ ");
         funcion = sc.nextLine();
-        System.out.print(funcion);
+        Derivadas_complement derivada;
+        if(!funcion.isEmpty()){
+            derivada = new Derivadas_complement();
+            derivada.setFuncionADerivar(funcion);
+            derivada.derivar();
+            System.out.print("LA DERIVADA ES : "+derivada.getFuncionDerivada());
+
+        }else{
+            System.out.print("DIGITA UNA ENTRADA VALIDA");
+        }
+       
     }
     
 }
