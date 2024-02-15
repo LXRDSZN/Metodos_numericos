@@ -1,6 +1,8 @@
 
-package derivadas_integrales;
+package integrales_derivadas;
+
 import java.util.Scanner;
+
 /**
  *
  * @author lxrdszn

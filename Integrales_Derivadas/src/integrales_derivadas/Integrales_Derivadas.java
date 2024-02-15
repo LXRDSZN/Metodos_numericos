@@ -1,13 +1,19 @@
 
-package derivadas_integrales;
+package integrales_derivadas;
+
 import java.util.Scanner;
+
 /**
  *
  * @author lxrdszn
  */
-public class Derivadas_Integrales {
+public class Integrales_Derivadas {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+       Scanner sc = new Scanner(System.in);
         int opcion;
       while(true){
           System.out.print("\n===============================MENU==============================================\n");
@@ -27,5 +33,6 @@ public class Derivadas_Integrales {
                     break;
             } 
         }
-    }    
+    }
+    
 }
