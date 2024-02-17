@@ -1,13 +1,15 @@
-
-package integrales_derivadas;
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package derivadas_integrales;
 import java.util.Scanner;
 
 /**
  *
  * @author lxrdszn
  */
-public class Integrales_Derivadas {
+public class Derivadas_Integrales {
 
     /**
      * @param args the command line arguments
