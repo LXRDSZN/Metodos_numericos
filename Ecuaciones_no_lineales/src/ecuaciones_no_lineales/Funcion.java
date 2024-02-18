@@ -33,7 +33,7 @@ public class Funcion {
 
         // Resolver la función mediante el método de bisección
         double raiz = biseccion(function, valor_a, valor_b, epsilon);
-        System.out.println("\nRaíz encontrada mediante el método de bisección: " + raiz);
+        System.out.println("\nMétodo de bisección: " + raiz);
     }
 
     private double evaluar(String funcion, double x) {
