@@ -9,10 +9,12 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.util.Scanner;
 
+
 public class Metodo_biseccion {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        double valorxrmul;
+        double valorxrpos;
         System.out.print("┌─[DIGITA TU FUNCION]─[~]\n└──╼ ");
         String funcion = scanner.nextLine();
 
@@ -118,9 +120,19 @@ double resultado_new = expression_new.evaluate();
 
 // Redondear resultado_new a dos decimales
 double resultado_redondeado = Math.round(resultado_new * 100.0) / 100.0;
+if (resultado_redondeado <= 0){
+    valorxrmul = resultado_redondeado * -1;
+    System.out.print("Resultado de la evaluación de la nueva función (redondeado): "+valorxrmul);
+}else{
+    if (resultado_redondeado>0){
+        // Imprimir el resultado redondeado de la evaluación
+        valorxrpos = resultado_redondeado * -1;
+        System.out.println("Resultado de la evaluación de la nueva función (redondeado): " + valorxrpos+"\n");
+    
+    }
+    
+}
 
-// Imprimir el resultado redondeado de la evaluación
-System.out.println("Resultado de la evaluación de la nueva función (redondeado): " + resultado_redondeado);
     }
 }
     
