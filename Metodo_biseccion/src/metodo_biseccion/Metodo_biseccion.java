@@ -88,7 +88,7 @@ public class Metodo_biseccion {
                         funcion_fxr_x_fa = funcion_de_xr * funcion_de_a;
 
                         // Imprimir los valores de las iteraciones en una sola fila
-                        System.out.printf("| %.20f\t| %.20f\t| %.20f\t| %.20f\t| %.20f\t| %.20f\t| %.30f\t| %.20f\t|\n",
+                        System.out.printf("| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t|\n",
                         valor_a, valor_b, valorxr, funcion_de_a, funcion_de_b, funcion_de_xr, funcion_fxr_x_fa, erp);
                            // Actualizamos A y B para la siguiente iteración
                           if (funcion_fxr_x_fa < 0) {
@@ -100,39 +100,8 @@ public class Metodo_biseccion {
                         // Actualizamos XR anterior
                         anterior_xr = valorxr;
         }
-              System.out.println("Valor final de XR: " + valorxr);
-              
-              
-String funcion_new = "";
-while (funcion_new.isEmpty()) {
-    System.out.print("┌─[DIGITA TU FUNCION NUEVAMENTE SIN EL ULTIMO NUMERO]─[~]\n└──╼ ");
-    funcion_new = scanner.nextLine().trim();
-}
-
-// Construir la expresión de la nueva función   
-Expression expression_new = new ExpressionBuilder(funcion_new)
-    .variables("x")
-    .build()
-    .setVariable("x", valorxr);
-
-// Evaluar la nueva función con el valor final de XR
-double resultado_new = expression_new.evaluate();
-
-// Redondear resultado_new a dos decimales
-double resultado_redondeado = Math.round(resultado_new * 100.0) / 100.0;
-if (resultado_redondeado <= 0){
-    valorxrmul = resultado_redondeado * -1;
-    System.out.print("Resultado de la evaluación de la nueva función (redondeado): "+valorxrmul);
-}else{
-    if (resultado_redondeado>0){
-        // Imprimir el resultado redondeado de la evaluación
-        valorxrpos = resultado_redondeado * -1;
-        System.out.println("Resultado de la evaluación de la nueva función (redondeado): " + valorxrpos+"\n");
-    
-    }
-    
-}
-
+                       System.out.print("La raiz es :"+valorxr+"\n");
+             
     }
 }
     
