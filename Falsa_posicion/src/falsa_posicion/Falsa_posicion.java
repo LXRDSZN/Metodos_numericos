@@ -76,7 +76,7 @@ public class Falsa_posicion {
             funcion_fxr_x_fa = funcion_de_xr * funcion_de_a;
 
             // Imprimir los valores de las iteraciones en una sola fila
-            System.out.printf("| %d\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t|\n",
+            System.out.printf("| %d\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.14f\t| %.13f\t|\n",
                     iteracion, valor_a, valor_b, valorxr, funcion_de_a, funcion_de_b, funcion_de_xr, funcion_fxr_x_fa, erp);
 
             // Actualizamos A y B para la siguiente iteración

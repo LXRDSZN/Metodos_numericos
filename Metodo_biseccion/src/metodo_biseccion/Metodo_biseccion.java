@@ -36,7 +36,7 @@ public class Metodo_biseccion {
                 System.out.println("Error al evaluar la función: " + e.getMessage());
             }
         }
-        
+
         System.out.print("┌─[DIGITA EL VALOR DE A]─[~]\n└──╼ ");
         double valor_a = scanner.nextDouble();
 
@@ -44,10 +44,10 @@ public class Metodo_biseccion {
         double valor_b = scanner.nextDouble();
 
         // Imprimir la cabecera de la tabla de iteraciones
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("| Iteración\t| A\t                | B\t               | XR\t                | F(A)\t                | F(B)\t                | F(XR)\t               | F(XR)*F(A)\t         | ERP\t                     |");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        double ERP = 0.00000000000001;
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("| Num\t| A\t                          | B\t                        | XR\t                         | F(A)\t                     | F(B)\t                        | F(XR)\t                                | F(XR)*F(A)\t                 | ERP\t            |");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        double ERP = 1e-16; // Cambio del valor de ERP
         double valorxr = 0.0;
         double funcion_de_a;
         double funcion_de_b;
@@ -60,11 +60,9 @@ public class Metodo_biseccion {
         double erp = Double.MAX_VALUE;
         while (erp > ERP) {
             iteracion++; // Incrementar el contador de iteraciones
+
             // Calculamos XR
             valorxr = (valor_a + valor_b) / 2;
-          
-            // Calculamos el ERP
-            erp = Math.abs((valorxr - anterior_xr) / valorxr) * 100;
 
             // Actualizamos el valor de A, B y XR para la siguiente iteración
             Expression expression = new ExpressionBuilder(funcion)
@@ -82,10 +80,13 @@ public class Metodo_biseccion {
 
             funcion_fxr_x_fa = funcion_de_xr * funcion_de_a;
 
+            // Calculamos el ERP
+            erp = Math.abs((valorxr - anterior_xr) / valorxr) * 100;
+
             // Imprimir los valores de las iteraciones en una sola fila
-            System.out.printf("| %d\t| %.20f\t| %.20f\t| %.20f\t| %.20f\t| %.20f\t| %.30f\t| %.20f\t|\n",
+            System.out.printf("| %d\t| %.20f\t| %.20f\t| %.20f\t| %.20f\t| %.20f\t| %.30f\t| %.20f\t| %.30f%%\t|\n",
                     iteracion, valor_a, valor_b, valorxr, funcion_de_a, funcion_de_b, funcion_de_xr, funcion_fxr_x_fa, erp);
-            
+
             // Actualizamos A y B para la siguiente iteración
             if (funcion_fxr_x_fa < 0) {
                 valor_b = valorxr;
@@ -96,8 +97,6 @@ public class Metodo_biseccion {
             // Actualizamos XR anterior
             anterior_xr = valorxr;
         }
-
         System.out.println("Valor final de XR: " + valorxr);
     }
 }
-
