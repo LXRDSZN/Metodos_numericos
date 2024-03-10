@@ -1,10 +1,10 @@
 
 package newton_raphson;
     //importamos las librerias que usaremos 
+import org.lsmp.djep.djep.DJep;
+import org.nfunk.jep.Node;
+import org.nfunk.jep.ParseException;
     import java.util.Scanner;
-    import net.objecthunter.exp4j.Expression;
-    import net.objecthunter.exp4j.ExpressionBuilder;
-
     public class Newton_Raphson {
         public static void main(String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -13,19 +13,116 @@ package newton_raphson;
                 System.out.print("┌─[DIGITA UN VALOR]─[~]\n" +"└──╼ ");
                     double valor_x = sc.nextDouble();
             //funcion g(x)
-            try {
-                Expression expression = new ExpressionBuilder(funcion)
-                        .variables("x")
-                        .build()
-                        .setVariable("x", valor_x);
-
-                double resultado = expression.evaluate();
-
-                System.out.println("El valor evaluado en la funcion es : " + resultado);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Error al evaluar la función: " + e.getMessage());
-            }
+//            try {
+///                Expression expression = new ExpressionBuilder(funcion)
+//                        .variables("x")
+//                        .build()
+//                        .setVariable("x", valor_x);
+//
+//                double resultado = expression.evaluate();
+//
+//                System.out.println("El valor evaluado en la funcion es : " + resultado);
+//            } catch (IllegalArgumentException e) {
+//                System.out.println("Error al evaluar la función: " + e.getMessage());
+//            }
             //funcion g'(x)
+            Derivadas derivadas = new Derivadas();
+            derivadas.derivadas(funcion);
             
+    }
+}
+
+
+/**
+ *
+ * @author lxrdszn
+ */
+class Derivadas {
+    public void derivadas(String funcion){
+    Scanner sc = new Scanner(System.in);
+    //String funcion = "";
+        // DJep es la clase encargada de la derivacion en su escencia
+        //System.out.print("┌─[DIGITA TU FUNCION A DERIVAR]─[~]\n" +"└──╼ ");
+        //funcion = sc.nextLine();
+        Derivadas_complement derivada;
+        if(!funcion.isEmpty()){
+            derivada = new Derivadas_complement();
+            derivada.setFuncionADerivar(funcion);
+            derivada.derivar();
+            System.out.print("LA DERIVADA ES : "+derivada.getFuncionDerivada()+"\n");
+
+        }else{
+            System.out.print("DIGITA UNA ENTRADA VALIDA\n");
+        }
+       
+    }
+    
+}
+
+
+/**
+ *
+ * @author lxrdszn
+ */
+ class Derivadas_complement {
+     //Variable que almacena las funciones a derivar
+    private String funcion = "";
+    // DJep es la clase encargada de la derivacion en su escencia
+    DJep djep;
+    Node nodoFuncion;
+    Node nodoDerivada;
+    
+    public Derivadas_complement() {
+        //...
+    }
+     public void setFuncionADerivar(String funcion) {
+        this.funcion = funcion;
+    }
+
+    public String getFuncionDerivada() {
+        return this.funcion;
+    }
+  public void derivar() {
+
+        try {
+
+            this.djep = new DJep();
+            // agrega funciones estandares cos(x), sin(x)
+            this.djep.addStandardFunctions();
+
+            // agrega constantes estandares, pi, e, etc
+            this.djep.addStandardConstants();
+
+            // por si existe algun numero complejo
+            this.djep.addComplex();
+
+            // permite variables no declarables
+            this.djep.setAllowUndeclared(true);
+
+            // permite asignaciones
+            this.djep.setAllowAssignment(true);
+
+            // regla de multiplicacion o para sustraccion y sumas
+            this.djep.setImplicitMul(true);
+
+            // regla de multiplicacion o para sustraccion y sumas
+            this.djep.addStandardDiffRules();
+
+            // coloca el nodo con una funcion preestablecida
+            this.nodoFuncion = this.djep.parse(this.funcion);
+
+            // deriva la funcion con respecto a x
+            Node diff = this.djep.differentiate(nodoFuncion, "x");
+
+            // Simplificamos la funcion con respecto a x
+            this.nodoDerivada = this.djep.simplify(diff);
+
+            // Convertimos el valor simplificado en un String
+            this.funcion = this.djep.toString(this.nodoDerivada);
+
+        } catch (ParseException e) {
+            this.funcion = "NaN";
+            System.out.println("Error: " + e.getErrorInfo());
+        }
     }
 }
