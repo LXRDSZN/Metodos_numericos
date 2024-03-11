@@ -25,23 +25,33 @@ import net.objecthunter.exp4j.ExpressionBuilder;
        // Obtiene el resultado de la derivada como un String
         String resultadoDerivada = derivada.getFuncionDerivada();
         System.out.println("Resultado de la derivada: " + resultadoDerivada);
-        
-        double resiultadoenderivacion = Funcionderivadax.dFuncionderivadax(resultadoDerivada, valor_x);
-        System.out.print(resiultadoenderivacion+"\n");
-        
+        //double resiultadoenderivacion = Funcionderivadax.dFuncionderivadax(resultadoDerivada, valor_x);
+        //System.out.print(resiultadoenderivacion+"\n");    
+         // Llama a la función funciondex y guarda el resultado en una variable
+        double resultadoFuncion = Funciondex.funciondex(funcion, valor_x);
         // Imprimir la cabecera de la tabla de iteraciones
         System.out.println("---------------------------------------------------------");
         System.out.println("| Iteracion\t|Xn \t        | ERP\t                |");
         System.out.println("---------------------------------------------------------");
-        
-         // Llama a la función funciondex y guarda el resultado en una variable
-        double resultadoFuncion = Funciondex.funciondex(funcion, valor_x);
-        
-       
-        double xn = valor_x-(resultadoFuncion/2);
-        
-        // Mostrar el valor de la iteración inicial en la tabla
-        System.out.printf("| %d\t        | %.6f\t|%.10f%%\t|\n", 1, valor_x, 100.0);
+        int iteracion = 1;
+        double xn = valor_x;
+        double erp = 100.0;
+
+        while (erp > 0.01) {
+            // Calcula la derivada y la función en cada iteración
+            double resiultadoenderivacion = Funcionderivadax.dFuncionderivadax(resultadoDerivada, xn);
+            resultadoFuncion = Funciondex.funciondex(funcion, xn);
+
+            double xn_anterior = xn;
+            xn = xn - (resultadoFuncion / resiultadoenderivacion);
+            erp = Math.abs((xn - xn_anterior) / xn) * 100.0;
+
+            // Mostrar los valores de la iteración en la tabla
+            System.out.printf("| %d\t        | %.3f\t|%.2f%%\t|\n", iteracion, xn, erp);
+
+            iteracion++;
+        }
+    
     }
 }
 
