@@ -1,88 +1,113 @@
 
 package newton_raphson;
     //importamos las librerias que usaremos 
-    import org.lsmp.djep.djep.DJep;
-    import org.nfunk.jep.Node;
-    import org.nfunk.jep.ParseException;
-    import net.objecthunter.exp4j.Expression;
-    import net.objecthunter.exp4j.ExpressionBuilder;
+import org.lsmp.djep.djep.DJep;
+import org.nfunk.jep.Node;
+import org.nfunk.jep.ParseException;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
     import java.util.Scanner;
-   
-/**
- * Clase principal para implementar el método de Newton-Raphson.
- */
-public class Newton_Raphson {
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        // Solicitar la función al usuario
-        System.out.print("┌─[DIGITA TU FUNCION]─[~]\n└──╼ ");
-        String funcion = sc.nextLine();
-
-        // Solicitar el valor inicial al usuario
-        System.out.print("┌─[DIGITA UN VALOR]─[~]\n└──╼ ");
-        double valor_x = sc.nextDouble();
-
-        // Evaluación de la función en x
-        Funciondex funcionx = new Funciondex();
-        funcionx.funciondex(funcion, valor_x);
-
-        // Cálculo de la derivada de la función
-        Derivadas derivadas = new Derivadas();
-        derivadas.derivadas(funcion);
-
-        // Imprimir cabecera de la tabla de iteraciones (Ejemplo incompleto de implementación)
-        System.out.println("------------------------------------------------------");
-        System.out.println("| Iteracion\t|Xn\t       | ERP\t             |");
-        System.out.println("------------------------------------------------------");
+    public class Newton_Raphson {
+       int iteracion;
+       double erp = 100;
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+                System.out.print("┌─[DIGITA TU FUNCION]─[~]\n" +"└──╼ ");
+                    String funcion = sc.nextLine();
+                System.out.print("┌─[DIGITA UN VALOR]─[~]\n" +"└──╼ ");
+                    double valor_x = sc.nextDouble();     
+                    
+        // Crea una instancia de Derivadas_complement y calcula la derivada
+        Derivadas_complement derivada = new Derivadas_complement();
+        derivada.setFuncionADerivar(funcion);
+        derivada.derivar();
+       // Obtiene el resultado de la derivada como un String
+        String resultadoDerivada = derivada.getFuncionDerivada();
+        System.out.println("Resultado de la derivada: " + resultadoDerivada);
+        
+        double resiultadoenderivacion = Funcionderivadax.dFuncionderivadax(resultadoDerivada, valor_x);
+        System.out.print(resiultadoenderivacion+"\n");
+        
+        // Imprimir la cabecera de la tabla de iteraciones
+        System.out.println("---------------------------------------------------------");
+        System.out.println("| Iteracion\t|Xn \t        | ERP\t                |");
+        System.out.println("---------------------------------------------------------");
+        
+         // Llama a la función funciondex y guarda el resultado en una variable
+        double resultadoFuncion = Funciondex.funciondex(funcion, valor_x);
         
        
+        double xn = valor_x-(resultadoFuncion/2);
+        
+        // Mostrar el valor de la iteración inicial en la tabla
+        System.out.printf("| %d\t        | %.6f\t|%.10f%%\t|\n", 1, valor_x, 100.0);
     }
 }
 
 
-/**
- * Clase para evaluar una función en un punto dado.
- */
-class Funciondex {
-    public void funciondex(String funcion, double valor_x) {
+
+class Funcionderivadax{
+   public static double dFuncionderivadax(String resultadoDerivada, double valor_x){
+               double resultadoderivadoengx = 0.0;
         try {
-            // Crear y evaluar la expresión
+            Expression expression = new ExpressionBuilder(resultadoDerivada)
+                    .variables("x")
+                    .build()
+                    .setVariable("x", valor_x);
+
+            resultadoderivadoengx = expression.evaluate();
+
+            //System.out.println("El valor evaluado en la función es: " + resultado);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error al evaluar la función: " + e.getMessage());
+        }
+        return resultadoderivadoengx;
+    }
+}
+
+class Funciondex {
+    public static double funciondex(String funcion, double valor_x) {
+        double resultado = 0.0;
+        try {
             Expression expression = new ExpressionBuilder(funcion)
                     .variables("x")
                     .build()
                     .setVariable("x", valor_x);
 
-            double resultado = expression.evaluate();
-            //System.out.println("El valor evaluado en la funcion es: " + resultado);
+            resultado = expression.evaluate();
+
+            //System.out.println("El valor evaluado en la función es: " + resultado);
         } catch (IllegalArgumentException e) {
             System.out.println("Error al evaluar la función: " + e.getMessage());
         }
+        return resultado;
     }
 }
-
-
 /**
- * clase para aplicar la formula xn-(f(g)/f'(g))
- */
-
-/**
- * Clase para derivar funciones.
+ *
+ * @author lxrdszn
  */
 class Derivadas {
-    public void derivadas(String funcion) {
-        if (!funcion.isEmpty()) {
-            // Crear un objeto para la derivación
-            Derivadas_complement derivada = new Derivadas_complement();
+    public void derivadas(String funcion){
+    Scanner sc = new Scanner(System.in);
+    //String funcion = "";
+        // DJep es la clase encargada de la derivacion en su escencia
+        //System.out.print("┌─[DIGITA TU FUNCION A DERIVAR]─[~]\n" +"└──╼ ");
+        //funcion = sc.nextLine();
+        Derivadas_complement derivada;
+        if(!funcion.isEmpty()){
+            derivada = new Derivadas_complement();
             derivada.setFuncionADerivar(funcion);
             derivada.derivar();
-            //System.out.println("LA DERIVADA ES: " + derivada.getFuncionDerivada());
-        } else {
-            System.out.println("DIGITA UNA ENTRADA VALIDA");
+            System.out.print("LA DERIVADA ES : "+derivada.getFuncionDerivada()+"\n");
+
+        }else{
+            System.out.print("DIGITA UNA ENTRADA VALIDA\n");
         }
+       
     }
+    
 }
 
 
