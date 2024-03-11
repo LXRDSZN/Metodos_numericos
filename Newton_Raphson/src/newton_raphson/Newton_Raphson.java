@@ -30,9 +30,9 @@ import net.objecthunter.exp4j.ExpressionBuilder;
          // Llama a la función funciondex y guarda el resultado en una variable
         double resultadoFuncion = Funciondex.funciondex(funcion, valor_x);
         // Imprimir la cabecera de la tabla de iteraciones
-        System.out.println("---------------------------------------------------------");
-        System.out.println("| Iteracion\t|Xn \t        | ERP\t                |");
-        System.out.println("---------------------------------------------------------");
+        System.out.println("---------------------------------");
+        System.out.println("| Iteracion\t|Xn \t| ERP\t|");
+        System.out.println("---------------------------------");
         int iteracion = 1;
         double xn = valor_x;
         double erp = 100.0;
