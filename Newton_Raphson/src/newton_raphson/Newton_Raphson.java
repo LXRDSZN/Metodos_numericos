@@ -25,9 +25,6 @@ import net.objecthunter.exp4j.ExpressionBuilder;
        // Obtiene el resultado de la derivada como un String
         String resultadoDerivada = derivada.getFuncionDerivada();
         System.out.println("Resultado de la derivada: " + resultadoDerivada);
-        //double resiultadoenderivacion = Funcionderivadax.dFuncionderivadax(resultadoDerivada, valor_x);
-        //System.out.print(resiultadoenderivacion+"\n");    
-         // Llama a la función funciondex y guarda el resultado en una variable
         double resultadoFuncion = Funciondex.funciondex(funcion, valor_x);
         // Imprimir la cabecera de la tabla de iteraciones
         System.out.println("---------------------------------");
@@ -68,7 +65,6 @@ class Funcionderivadax{
 
             resultadoderivadoengx = expression.evaluate();
 
-            //System.out.println("El valor evaluado en la función es: " + resultado);
         } catch (IllegalArgumentException e) {
             System.out.println("Error al evaluar la función: " + e.getMessage());
         }
@@ -87,7 +83,7 @@ class Funciondex {
 
             resultado = expression.evaluate();
 
-            //System.out.println("El valor evaluado en la función es: " + resultado);
+     
         } catch (IllegalArgumentException e) {
             System.out.println("Error al evaluar la función: " + e.getMessage());
         }
@@ -102,9 +98,6 @@ class Derivadas {
     public void derivadas(String funcion){
     Scanner sc = new Scanner(System.in);
     //String funcion = "";
-        // DJep es la clase encargada de la derivacion en su escencia
-        //System.out.print("┌─[DIGITA TU FUNCION A DERIVAR]─[~]\n" +"└──╼ ");
-        //funcion = sc.nextLine();
         Derivadas_complement derivada;
         if(!funcion.isEmpty()){
             derivada = new Derivadas_complement();
