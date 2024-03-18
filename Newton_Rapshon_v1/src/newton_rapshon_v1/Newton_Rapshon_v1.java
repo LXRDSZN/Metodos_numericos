@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Newton_Rapshon_v1 {
 
     public static double funcion(double x) {
-        return  Math.cos(x) - x * x * x;
+        return Math.pow(x, 3)-x-1;
     }
 
     public static double derivada(double x) {
-        return -Math.sin(x) - 3.0 * x * x;
+        return Math.pow(x, 2) *2 -1;
     }
 
     public static void main(String[] args) {
