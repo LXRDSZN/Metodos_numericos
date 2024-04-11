@@ -1,4 +1,4 @@
-<h1 align="center">🌟 Bienvenido a Mi Repositorio de Métodos Numéricos 🌟</h1>
+<h1 align="center">✨ Bienvenido a Mi Repositorio de Métodos Numéricos ✨</h1>
 
 <p align="center">
   ¡Hola! Gracias por visitar mi repositorio. Aquí encontrarás implementaciones de varios métodos numéricos y algorítmicos fundamentales, diseñados para ayudarte a entender y aplicar estas técnicas en tus propios proyectos.
@@ -48,5 +48,19 @@
 
 <p align="center">
   Este repositorio es mantenido por <strong>LXRDSZN</strong>. Si tienes alguna pregunta o comentario, no dudes en abrir un issue o enviar un pull request.
+</p>
+
+## Contáctame
+
+<p align="center">
+  <a href="https://t.me/tuUsuarioDeTelegram">
+    <img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" />
+  </a>
+  <a href="https://wa.me/tuNúmeroDeWhatsApp">
+    <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+  </a>
+  <a href="https://www.facebook.com/tuUsuarioDeFacebook">
+    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" />
+  </a>
 </p>
 
