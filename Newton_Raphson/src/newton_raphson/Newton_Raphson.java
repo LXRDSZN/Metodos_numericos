@@ -27,9 +27,9 @@ public class Newton_Raphson {
         System.out.println("Resultado de la derivada: " + resultadoDerivada);
         double resultadoFuncion = Funciondex.funciondex(funcion, valor_x);
         // Imprimir la cabecera de la tabla de iteraciones
-        System.out.println("---------------------------------");
-        System.out.println("| Iteracion\t|Xn \t| ERP\t|");
-        System.out.println("---------------------------------");
+        System.out.println("---------------------------------------------------------");
+        System.out.println("| Iteracion\t|Xn \t                | ERP\t        |");
+        System.out.println("---------------------------------------------------------");
         int iteracion = 1;
         double xn = valor_x;
         double erp = 100.0;
@@ -43,7 +43,7 @@ public class Newton_Raphson {
             erp = Math.abs((xn - xn_anterior) / xn) * 100.0;
 
             // Mostrar los valores de la iteración en la tabla
-            System.out.printf("| %d\t        | %.3f\t|%.2f%%\t|\n", iteracion, xn, erp);
+            System.out.printf("| %d\t        | %.15f\t|%.8f%%\t|\n", iteracion, xn, erp);
 
             iteracion++;
         }
