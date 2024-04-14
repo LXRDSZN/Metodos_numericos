@@ -15,27 +15,3 @@ public class Integracion {
     
 }
 
-//clase funcion 
-class funcion_de_x{
-    public void funcion_de_x(){
-        
-    }
-}
-// clase para la derivacion adelante 
-class Derivacion_adelante{
-    public void Derivacion_adelante(){
-        
-    }
-}
-//clase para la derivacion centrada
-class Derivacion_centrada{
-    public void Derivacion_centrada(){
-        
-    }
-}
-//clase para la derivacion atras
-class Derivacion_atras{
-    public void Derivacion_atras(){
-        
-    }
-}
