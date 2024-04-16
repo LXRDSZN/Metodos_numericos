@@ -37,9 +37,9 @@ class Tabla {
             
         } else {
             // Imprimir la cabecera de la tabla de iteraciones
-            System.out.println("--------------------------------------------------------");
-            System.out.println("|Xn\t|x \t        | f(x)\t        |fx*2\t        |");
-            System.out.println("--------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------");
+            System.out.println("|Xn\t        |x \t        | f(x)\t        |fx*2\t        |");
+            System.out.println("-----------------------------------------------------------------");
             
             double x0 = 0; // Iniciar contador para las iteraciones
             double x = valor_a; // Iniciar x con el valor inicial
