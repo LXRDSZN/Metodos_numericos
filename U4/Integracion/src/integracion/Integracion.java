@@ -46,10 +46,9 @@ class Tabla {
             double suma_fx2 = 0; // Variable para almacenar la suma de fx*2
             
             while (x <= valor_b) { // Iterar hasta que x alcance valor_b
-                // Calcular f(x) = 1 / (x^2)
-                double numerador = 170;
-                double denominador = 1 + Math.pow(x, 2);
-                double fx = numerador / denominador;
+                // Calcular f(x) = 1 / (x^2) 
+                 double denominador = Math.sqrt(1 + Math.pow(x, 2));
+                double fx = denominador;
                 
                 // Calcular fx*2
                 double fx2;
