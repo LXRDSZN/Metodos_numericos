@@ -10,9 +10,9 @@ public class Integracion {
         System.out.print("Integrales definidas\n");
         
         System.out.print("┌─[LXRDSZN]─[Digita el valor de b]\n└──╼ ");
-            double valor_b = sc.nextInt();
+            double valor_b = sc.nextDouble();
         System.out.print("┌─[LXRDSZN]─[Digita el valor de a]\n└──╼ ");
-            double  valor_a = sc.nextInt();
+            double  valor_a = sc.nextDouble();
         System.out.print("┌─[LXRDSZN]─[Digita el numero de particiones (n)]\n└──╼ ");
             double particiones_n = sc.nextDouble();
             
