@@ -52,7 +52,7 @@ class Tabla {
 
                         while (x <= valor_b) { // Iterar hasta que x alcance valor_b
                             // Calcular f(x) = 1 / (x^2)
-                            double denominador = Math.sqrt(1+Math.pow(Math.cos(x),2));
+                           double denominador = Math.sqrt(1 + Math.pow(1/x, 2));
                             double fx = denominador;
 
                             // Calcular el peso para f(x)
@@ -99,7 +99,7 @@ class Tabla {
             
                         while (x <= valor_b) { // Iterar hasta que x alcance valor_b
                             // Calcular f(x) = 1 / (x^2) 
-                            double denominador = Math.pow(x,3);
+                            double denominador = Math.sqrt(1 + Math.pow(1/x, 2));
                             double fx = denominador;
                 
                             // Calcular fx*3
